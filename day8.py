@@ -19,9 +19,11 @@ div_hot = soup.find('ul',class_="ui-slide-content")
 #     movie_title = i.a.get_text()
 #     movie_title = movie_title.strip() #去除movie_title两边的空格
 #     print movie_title
+print '正在热映：'
 for child in div_hot.children:
     if type(child)==(bs4.element.Tag):
-        print child['data-title']
+        if child.has_attr('data-title'):
+            print child['data-title']
 # print div_hot
 # contents = soup.select(' div.screening-bd > ul > li')
 # print len(contents)

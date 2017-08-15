@@ -1,17 +1,17 @@
 #!/usr/bin/env python
-# -*- coding: gbk -*-
+# -*- coding: utf-8 -*-
 
-#ÖÐÎÄ±àÂëÎÊÌâÌ«·³ÁËÂèµÄ
+#ä¸­æ–‡ç¼–ç é—®é¢˜å¤ªçƒ¦äº†å¦ˆçš„
 
 '''
-½ñÌì¾ÍÊÇÔÚÖ®Ç°¡°²éÕÒÎÄ¼þ¡±µÄ»ù´¡ÉÏ£¬Ôö¼Ó¶ÔÎÄ¼þÄÚÈÝµÄ¼ìË÷¡£ÈÔÈ»ÊÇÉè¶¨Ä³¸öÎÄ¼þ¼Ð£¬²»Í¬µÄÊÇÒªÔÙÔö¼ÓÒ»¸öÎÄ±¾²ÎÊý£¬È»ºóÁÐ³öÕâ¸öÎÄ¼þ¼Ð£¨º¬ËùÓÐ×ÓÎÄ¼þ¼Ð£©Àï£¬ËùÓÐÎÄ¼þÄÚÈÝ°üÀ¨Õâ¸öËÑË÷ÎÄ±¾µÄÎÄ¼þ¡£
+ä»Šå¤©å°±æ˜¯åœ¨ä¹‹å‰â€œæŸ¥æ‰¾æ–‡ä»¶â€çš„åŸºç¡€ä¸Šï¼Œå¢žåŠ å¯¹æ–‡ä»¶å†…å®¹çš„æ£€ç´¢ã€‚ä»ç„¶æ˜¯è®¾å®šæŸä¸ªæ–‡ä»¶å¤¹ï¼Œä¸åŒçš„æ˜¯è¦å†å¢žåŠ ä¸€ä¸ªæ–‡æœ¬å‚æ•°ï¼Œç„¶åŽåˆ—å‡ºè¿™ä¸ªæ–‡ä»¶å¤¹ï¼ˆå«æ‰€æœ‰å­æ–‡ä»¶å¤¹ï¼‰é‡Œï¼Œæ‰€æœ‰æ–‡ä»¶å†…å®¹åŒ…æ‹¬è¿™ä¸ªæœç´¢æ–‡æœ¬çš„æ–‡ä»¶ã€‚
 '''
 import os
 import fnmatch
 import re
 def find_contents(path,keywords):
     fileList = []
-    files = os.walk(path)  # Ê¹ÓÃos.walk£¨±éÀú°üÀ¨×ÓÄ¿Â¼ÏÂËùÓÐÎÄ¼þ£©£¬Éú³ÉÈý×éÁÐ±í£ºµ±Ç°Ä¿Â¼µØÖ·µ±ÏÂÇ°Ä¿Â¼ÏÂµÄÎÄ¼þ¼ÐÃû£¨Ã»ÓÐÔò·µ»ØÒ»¸ö¿ÕÁÐ±í£©£¬µ±Ç°Ä¿Â¼µÄËùÓÐÎÄ¼þ
+    files = os.walk(path)  # ä½¿ç”¨os.walkï¼ˆéåŽ†åŒ…æ‹¬å­ç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶ï¼‰ï¼Œç”Ÿæˆä¸‰ç»„åˆ—è¡¨ï¼šå½“å‰ç›®å½•åœ°å€å½“ä¸‹å‰ç›®å½•ä¸‹çš„æ–‡ä»¶å¤¹åï¼ˆæ²¡æœ‰åˆ™è¿”å›žä¸€ä¸ªç©ºåˆ—è¡¨ï¼‰ï¼Œå½“å‰ç›®å½•çš„æ‰€æœ‰æ–‡ä»¶
     for path, dirnames, filenames in files:
         for file in filenames:
             if file.endswith('.txt'):
@@ -21,15 +21,16 @@ def find_contents(path,keywords):
                     # response = fp.read().decode('gbk')
                     response = fp.read()
                     print response
-                    if re.search(response,keywords):
+                    if len(re.findall(keywords,response))>0:  #æ­£åˆ™æŸ¥æ‰¾
                         fileList.append(filepath)
+    return fileList
 
 if __name__ == '__main__':
     root = r'F:\test'
-    keywords = r'te'
+    keywords = '2'
     lists = find_contents(root,keywords)
     if lists:
         for i in lists:
-            print i
+            print i + 'å­˜åœ¨'
     else:
         print 'Not Found!'

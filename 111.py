@@ -13,7 +13,7 @@ import random
 # #     os.mknod('account.txt')
 # # if os.path.isfile('111.py'):
 # #     print 'ok'
-door = [0, 1, 2]
-carDoor = random.choice(door)
-# door[carDoor] = 1
-print carDoor
+# door = [0, 1, 0]
+num = 10001
+num = str(num)
+print num[1]

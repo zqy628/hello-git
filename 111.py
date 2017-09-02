@@ -14,6 +14,8 @@ import random
 # # if os.path.isfile('111.py'):
 # #     print 'ok'
 # door = [0, 1, 0]
-num = 10001
-num = str(num)
-print num[1]
+door = [1,0,3,0,5,0,7,8]
+door.pop(0)
+print door
+door.remove(0)
+print door

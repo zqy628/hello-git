@@ -7,4 +7,16 @@
 '''
 import random
 
-def 
+def hongbao():
+    print '发送红包总金额：'
+    money = input()*100
+    print '抢红包人数：'
+    people = input()
+    maxMoney = money/people*2
+    for person in xrange(people-1):
+        m = random.randint(1,min(maxMoney,money))
+        money -= m
+        print '第',person+1,'个红包金额:',m/100.0
+    print '第', people, '个红包金额:', money / 100.0
+
+hongbao()

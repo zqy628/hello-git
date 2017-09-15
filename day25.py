@@ -6,5 +6,23 @@
 欧拉在回信中也提出另一等价版本，即任一大于 2 的偶数都可写成两个质数之和。今日常见的猜想陈述为欧拉的版本。
 '''
 # 实现一段代码，输入一个大于 2 的偶数 k，输出两个质数 m、n，满足 m + n == k。
+import math
 def goldbach(n):
-    
+    for i in range(2,n/2+1):
+        j = n - i
+        if isPrime(i) and isPrime(j):
+            print '{0} = {1} + {2}'.format(n,i,j)
+
+def isPrime(num):
+    maxC = int(math.sqrt(num))
+    if num == 2:
+        return True
+    elif num % 2 == 0:
+        return False
+    else:
+        for i in range(3,maxC+1,2):
+            if num % i == 0:
+                return False
+        return True
+
+goldbach(1950)

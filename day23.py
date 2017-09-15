@@ -1,8 +1,24 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
-给定一个 3 * 3 的九宫格和 1 - 9 九个数字，将 9 个数字按照一定的规则填充进九宫格内，使九宫格内横、竖、斜每条线的和都相等，输出至少一种结果。
-附加题：
-
-给定一个正整数 N（N >= 1），将 1 - N^2 填充到 N * N 的格子中，使横、竖、斜（对角线）每条线的和都相等，输出至少一种组合。
+杨辉三角形，也称帕斯卡三角，其定义为：顶端是 1,视为(row0).第1行(row1)(1&1)两个1,
+这两个1是由他们上头左右两数之和 (不在三角形内的数视为0).依此类推产生第2行(row2):0+1=1;1+1=2;1+0=1.
+第3行(row3):0+1=1;1+2=3; 2+1=3;1+0=1. 循此法可以产生以下诸行，如下图所示。
 '''
+def yanghui(n):
+    yh_nums = [[1],[1,1]]
+    for i in range(2,n):
+        # print i
+        yh_num = [1] #inside
+        for j in range(1,i):
+            yh_num.append(yh_nums[i-1][j-1] + yh_nums[i-1][j])
+        yh_num.append(1)
+        yh_nums.append(yh_num)
+    for yh_num in yh_nums:
+        for num in yh_num:
+            print str(num) + '\t',
+        print '\n'
+    # print yh_nums
+yanghui(100)
+
+

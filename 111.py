@@ -3,18 +3,23 @@
 # from itertools import *
 # for i in combinations_with_replacement(123, 3):
 #     print i
-def yanghui(n):
-    lst = []
-    for row in range(n):
-        if row < 2:
-            n_row = [1 for i in range(row+1)]
-        else:
-            last_row = lst[-1]
-            n_row = [last_row[i]+last_row[i+1] for i in range(len(last_row)-1)]
-            n_row = [1] + n_row + [1]
-        lst.append(n_row)
-    return lst
+import itertools
 
-yh = yanghui(5)
-for i in yh:
-    print('{:^20}'.format(str(i)[1:-1]))
+countries = ['Ameria', 'Germany', 'England', 'France', 'Russia', 'Italy']
+persons = ['A', 'B', 'C', 'D', 'E', 'F']
+
+for res in itertools.permutations(persons, 6):
+    # A,E,C不是美国人，俄国人，德国人
+    if res[0] in 'AEC' or res[4] in 'AEC' or res[1] in 'AEC':
+        continue
+    # B,F不是德国人
+    if res[1] == 'B' or res[1] == 'F':
+        continue
+    # A不是法国人，C不是意大利人
+    if res[3] == 'A' or res[5] == 'C':
+        continue
+    # B不是美国人，C不是法国人
+    if res[0] == 'B'or res[3] == 'C':
+        continue
+
+    print(sorted(zip(res, countries), key=lambda t: t[0]))

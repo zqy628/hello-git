@@ -3,23 +3,13 @@
 # from itertools import *
 # for i in combinations_with_replacement(123, 3):
 #     print i
-import itertools
+import time
+import sys
+def main():
+    for i in range(65, 91):
+        s = "{name:s}".format(name=chr(i))
+        time.sleep(0.5)
+        sys.stdout.write(s)
 
-countries = ['Ameria', 'Germany', 'England', 'France', 'Russia', 'Italy']
-persons = ['A', 'B', 'C', 'D', 'E', 'F']
 
-for res in itertools.permutations(persons, 6):
-    # A,E,C不是美国人，俄国人，德国人
-    if res[0] in 'AEC' or res[4] in 'AEC' or res[1] in 'AEC':
-        continue
-    # B,F不是德国人
-    if res[1] == 'B' or res[1] == 'F':
-        continue
-    # A不是法国人，C不是意大利人
-    if res[3] == 'A' or res[5] == 'C':
-        continue
-    # B不是美国人，C不是法国人
-    if res[0] == 'B'or res[3] == 'C':
-        continue
-
-    print(sorted(zip(res, countries), key=lambda t: t[0]))
+main()
